@@ -1,0 +1,125 @@
+
+
+########################################
+### RESULTS FOR WAVE10 ###
+########################################
+
+==============================
+   MODEL: MULTI_GRAPH_PRED_MOE
+==============================
+
+  - Fixed Hyperparameters Used:
+    - model_type     : multi_graph_pred_moe
+    - lr             : 2e-05
+    - hidden_dim     : 512
+    - n_layers       : 3
+    - dropout        : 0.3
+    - weight_decay   : 0.001
+    - pred_hidden    : 256
+    - pred_dropout   : 0.1
+    - max_epochs     : 150
+    - num_heads      : 16
+    - gat_attn_drop  : 0.1
+    - gat_neg_slope  : 0.2
+    - gin_mlp_layers : 2
+    - using_moe      : True
+    - top_k          : 3
+
+--- Scenario: Fixed Disease 'HIBP' ---
+
+  - Final CV Test Metrics (Mean ± Std Dev):
+    - auprc                    : 0.8282 ± 0.0036
+    - auroc                    : 0.8266 ± 0.0023
+    - best_epoch_by_auroc      : 110.8 ± 2.9
+
+--------------------------------------------------
+
+--- Scenario: Fixed Disease 'DIAB' ---
+
+  - Final CV Test Metrics (Mean ± Std Dev):
+    - auprc                    : 0.8758 ± 0.0068
+    - auroc                    : 0.8771 ± 0.0042
+    - best_epoch_by_auroc      : 134.0 ± 14.7
+
+--------------------------------------------------
+
+--- Scenario: Fixed Disease 'CANCR' ---
+
+  - Final CV Test Metrics (Mean ± Std Dev):
+    - auprc                    : 0.8292 ± 0.0052
+    - auroc                    : 0.8490 ± 0.0031
+    - best_epoch_by_auroc      : 90.4 ± 23.8
+
+--------------------------------------------------
+
+--- Scenario: Fixed Disease 'LUNG' ---
+
+  - Final CV Test Metrics (Mean ± Std Dev):
+    - auprc                    : 0.8361 ± 0.0118
+    - auroc                    : 0.8401 ± 0.0063
+    - best_epoch_by_auroc      : 125.8 ± 16.4
+
+--------------------------------------------------
+
+--- Scenario: Fixed Disease 'HEART' ---
+
+  - Final CV Test Metrics (Mean ± Std Dev):
+    - auprc                    : 0.8386 ± 0.0037
+    - auroc                    : 0.8446 ± 0.0035
+    - best_epoch_by_auroc      : 136.0 ± 11.7
+
+--------------------------------------------------
+
+--- Scenario: Fixed Disease 'STROK' ---
+
+  - Final CV Test Metrics (Mean ± Std Dev):
+    - auprc                    : 0.8245 ± 0.0158
+    - auroc                    : 0.8207 ± 0.0107
+    - best_epoch_by_auroc      : 79.6 ± 23.2
+
+--------------------------------------------------
+
+--- Scenario: Fixed Disease 'PSYCH' ---
+
+  - Final CV Test Metrics (Mean ± Std Dev):
+    - auprc                    : 0.8372 ± 0.0054
+    - auroc                    : 0.8384 ± 0.0070
+    - best_epoch_by_auroc      : 114.0 ± 34.8
+
+--------------------------------------------------
+
+--- Scenario: Fixed Disease 'ARTHR' ---
+
+  - Final CV Test Metrics (Mean ± Std Dev):
+    - auprc                    : 0.8218 ± 0.0030
+    - auroc                    : 0.8186 ± 0.0029
+    - best_epoch_by_auroc      : 102.0 ± 35.6
+
+--------------------------------------------------
+
+--- Scenario: Fixed Disease 'MEMORY' ---
+
+  - Final CV Test Metrics (Mean ± Std Dev):
+    - auprc                    : 0.7169 ± 0.0335
+    - auroc                    : 0.7215 ± 0.0220
+    - best_epoch_by_auroc      : 82.4 ± 19.1
+
+--------------------------------------------------
+
+
+SUMMARY OF AUROC & AUPRC BY DISEASE
+--------------------------------------------------
+Disease                       AUROC     AUPRC
+--------------------------------------------------
+hibp                         0.8266    0.8282
+diab                         0.8771    0.8758
+cancr                        0.8490    0.8292
+lung                         0.8401    0.8361
+heart                        0.8446    0.8386
+strok                        0.8207    0.8245
+psych                        0.8384    0.8372
+arthr                        0.8186    0.8218
+memory                       0.7215    0.7169
+Mean                         0.8263    0.8231
+==================================================
+

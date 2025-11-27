@@ -1,0 +1,481 @@
+--- Wave: 10 | Fixed Disease: hibp | Fold: 1 ---
+  - Total Test Edges: 10767 (Positive: 3589, Negative: 7178)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 1582 Positive, 253 Negative
+    - Disease 'cancr': 332 Positive, 950 Negative
+    - Disease 'diab': 529 Positive, 800 Negative
+    - Disease 'heart': 525 Positive, 803 Negative
+    - Disease 'lung': 187 Positive, 1071 Negative
+    - Disease 'memory': 51 Positive, 1207 Negative
+    - Disease 'psych': 244 Positive, 983 Negative
+    - Disease 'strok': 139 Positive, 1111 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: hibp | Fold: 2 ---
+  - Total Test Edges: 10767 (Positive: 3589, Negative: 7178)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 1589 Positive, 271 Negative
+    - Disease 'cancr': 315 Positive, 941 Negative
+    - Disease 'diab': 530 Positive, 808 Negative
+    - Disease 'heart': 527 Positive, 768 Negative
+    - Disease 'lung': 182 Positive, 1068 Negative
+    - Disease 'memory': 38 Positive, 1213 Negative
+    - Disease 'psych': 258 Positive, 972 Negative
+    - Disease 'strok': 150 Positive, 1137 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: hibp | Fold: 3 ---
+  - Total Test Edges: 10767 (Positive: 3589, Negative: 7178)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 1572 Positive, 254 Negative
+    - Disease 'cancr': 307 Positive, 987 Negative
+    - Disease 'diab': 540 Positive, 755 Negative
+    - Disease 'heart': 565 Positive, 762 Negative
+    - Disease 'lung': 187 Positive, 1052 Negative
+    - Disease 'memory': 36 Positive, 1234 Negative
+    - Disease 'psych': 250 Positive, 1011 Negative
+    - Disease 'strok': 132 Positive, 1123 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: hibp | Fold: 4 ---
+  - Total Test Edges: 10767 (Positive: 3589, Negative: 7178)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 1577 Positive, 225 Negative
+    - Disease 'cancr': 333 Positive, 964 Negative
+    - Disease 'diab': 528 Positive, 798 Negative
+    - Disease 'heart': 537 Positive, 765 Negative
+    - Disease 'lung': 186 Positive, 1094 Negative
+    - Disease 'memory': 41 Positive, 1247 Negative
+    - Disease 'psych': 274 Positive, 980 Negative
+    - Disease 'strok': 113 Positive, 1105 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: hibp | Fold: 5 ---
+  - Total Test Edges: 10767 (Positive: 3589, Negative: 7178)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 1584 Positive, 276 Negative
+    - Disease 'cancr': 315 Positive, 1021 Negative
+    - Disease 'diab': 545 Positive, 753 Negative
+    - Disease 'heart': 519 Positive, 782 Negative
+    - Disease 'lung': 185 Positive, 1057 Negative
+    - Disease 'memory': 41 Positive, 1238 Negative
+    - Disease 'psych': 264 Positive, 998 Negative
+    - Disease 'strok': 136 Positive, 1053 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: diab | Fold: 1 ---
+  - Total Test Edges: 4302 (Positive: 1487, Negative: 2815)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 424 Positive, 132 Negative
+    - Disease 'cancr': 112 Positive, 424 Negative
+    - Disease 'heart': 191 Positive, 307 Negative
+    - Disease 'hibp': 551 Positive, 78 Negative
+    - Disease 'lung': 57 Positive, 475 Negative
+    - Disease 'memory': 22 Positive, 492 Negative
+    - Disease 'psych': 84 Positive, 435 Negative
+    - Disease 'strok': 46 Positive, 472 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: hibp | Fold: 1 ---
+  - Total Test Edges: 10767 (Positive: 3589, Negative: 7178)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 1582 Positive, 253 Negative
+    - Disease 'cancr': 332 Positive, 950 Negative
+    - Disease 'diab': 529 Positive, 800 Negative
+    - Disease 'heart': 525 Positive, 803 Negative
+    - Disease 'lung': 187 Positive, 1071 Negative
+    - Disease 'memory': 51 Positive, 1207 Negative
+    - Disease 'psych': 244 Positive, 983 Negative
+    - Disease 'strok': 139 Positive, 1111 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: hibp | Fold: 2 ---
+  - Total Test Edges: 10767 (Positive: 3589, Negative: 7178)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 1589 Positive, 271 Negative
+    - Disease 'cancr': 315 Positive, 941 Negative
+    - Disease 'diab': 530 Positive, 808 Negative
+    - Disease 'heart': 527 Positive, 768 Negative
+    - Disease 'lung': 182 Positive, 1068 Negative
+    - Disease 'memory': 38 Positive, 1213 Negative
+    - Disease 'psych': 258 Positive, 972 Negative
+    - Disease 'strok': 150 Positive, 1137 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: hibp | Fold: 3 ---
+  - Total Test Edges: 10767 (Positive: 3589, Negative: 7178)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 1572 Positive, 254 Negative
+    - Disease 'cancr': 307 Positive, 987 Negative
+    - Disease 'diab': 540 Positive, 755 Negative
+    - Disease 'heart': 565 Positive, 762 Negative
+    - Disease 'lung': 187 Positive, 1052 Negative
+    - Disease 'memory': 36 Positive, 1234 Negative
+    - Disease 'psych': 250 Positive, 1011 Negative
+    - Disease 'strok': 132 Positive, 1123 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: hibp | Fold: 4 ---
+  - Total Test Edges: 10767 (Positive: 3589, Negative: 7178)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 1577 Positive, 225 Negative
+    - Disease 'cancr': 333 Positive, 964 Negative
+    - Disease 'diab': 528 Positive, 798 Negative
+    - Disease 'heart': 537 Positive, 765 Negative
+    - Disease 'lung': 186 Positive, 1094 Negative
+    - Disease 'memory': 41 Positive, 1247 Negative
+    - Disease 'psych': 274 Positive, 980 Negative
+    - Disease 'strok': 113 Positive, 1105 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: hibp | Fold: 5 ---
+  - Total Test Edges: 10767 (Positive: 3589, Negative: 7178)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 1584 Positive, 276 Negative
+    - Disease 'cancr': 315 Positive, 1021 Negative
+    - Disease 'diab': 545 Positive, 753 Negative
+    - Disease 'heart': 519 Positive, 782 Negative
+    - Disease 'lung': 185 Positive, 1057 Negative
+    - Disease 'memory': 41 Positive, 1238 Negative
+    - Disease 'psych': 264 Positive, 998 Negative
+    - Disease 'strok': 136 Positive, 1053 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: diab | Fold: 1 ---
+  - Total Test Edges: 4302 (Positive: 1487, Negative: 2815)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 424 Positive, 132 Negative
+    - Disease 'cancr': 112 Positive, 424 Negative
+    - Disease 'heart': 191 Positive, 307 Negative
+    - Disease 'hibp': 551 Positive, 78 Negative
+    - Disease 'lung': 57 Positive, 475 Negative
+    - Disease 'memory': 22 Positive, 492 Negative
+    - Disease 'psych': 84 Positive, 435 Negative
+    - Disease 'strok': 46 Positive, 472 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: diab | Fold: 2 ---
+  - Total Test Edges: 4302 (Positive: 1487, Negative: 2815)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 431 Positive, 123 Negative
+    - Disease 'cancr': 99 Positive, 416 Negative
+    - Disease 'heart': 190 Positive, 289 Negative
+    - Disease 'hibp': 539 Positive, 79 Negative
+    - Disease 'lung': 47 Positive, 469 Negative
+    - Disease 'memory': 21 Positive, 525 Negative
+    - Disease 'psych': 115 Positive, 434 Negative
+    - Disease 'strok': 45 Positive, 480 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: diab | Fold: 3 ---
+  - Total Test Edges: 4302 (Positive: 1487, Negative: 2815)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 443 Positive, 120 Negative
+    - Disease 'cancr': 126 Positive, 410 Negative
+    - Disease 'heart': 186 Positive, 318 Negative
+    - Disease 'hibp': 522 Positive, 71 Negative
+    - Disease 'lung': 46 Positive, 455 Negative
+    - Disease 'memory': 14 Positive, 541 Negative
+    - Disease 'psych': 93 Positive, 432 Negative
+    - Disease 'strok': 57 Positive, 468 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: diab | Fold: 4 ---
+  - Total Test Edges: 4302 (Positive: 1487, Negative: 2815)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 444 Positive, 146 Negative
+    - Disease 'cancr': 100 Positive, 420 Negative
+    - Disease 'heart': 202 Positive, 321 Negative
+    - Disease 'hibp': 547 Positive, 76 Negative
+    - Disease 'lung': 52 Positive, 436 Negative
+    - Disease 'memory': 23 Positive, 499 Negative
+    - Disease 'psych': 74 Positive, 443 Negative
+    - Disease 'strok': 45 Positive, 474 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: diab | Fold: 5 ---
+  - Total Test Edges: 4302 (Positive: 1487, Negative: 2815)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 434 Positive, 126 Negative
+    - Disease 'cancr': 126 Positive, 426 Negative
+    - Disease 'heart': 196 Positive, 284 Negative
+    - Disease 'hibp': 516 Positive, 78 Negative
+    - Disease 'lung': 50 Positive, 475 Negative
+    - Disease 'memory': 17 Positive, 492 Negative
+    - Disease 'psych': 100 Positive, 438 Negative
+    - Disease 'strok': 48 Positive, 496 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: cancr | Fold: 1 ---
+  - Total Test Edges: 3294 (Positive: 1098, Negative: 2196)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 344 Positive, 93 Negative
+    - Disease 'diab': 110 Positive, 301 Negative
+    - Disease 'heart': 151 Positive, 262 Negative
+    - Disease 'hibp': 318 Positive, 109 Negative
+    - Disease 'lung': 66 Positive, 326 Negative
+    - Disease 'memory': 14 Positive, 397 Negative
+    - Disease 'psych': 63 Positive, 334 Negative
+    - Disease 'strok': 32 Positive, 374 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: cancr | Fold: 2 ---
+  - Total Test Edges: 3294 (Positive: 1098, Negative: 2196)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 365 Positive, 113 Negative
+    - Disease 'diab': 103 Positive, 280 Negative
+    - Disease 'heart': 134 Positive, 269 Negative
+    - Disease 'hibp': 322 Positive, 121 Negative
+    - Disease 'lung': 63 Positive, 360 Negative
+    - Disease 'memory': 11 Positive, 396 Negative
+    - Disease 'psych': 61 Positive, 309 Negative
+    - Disease 'strok': 39 Positive, 348 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: cancr | Fold: 3 ---
+  - Total Test Edges: 3294 (Positive: 1098, Negative: 2196)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 347 Positive, 106 Negative
+    - Disease 'diab': 122 Positive, 286 Negative
+    - Disease 'heart': 132 Positive, 251 Negative
+    - Disease 'hibp': 329 Positive, 105 Negative
+    - Disease 'lung': 58 Positive, 337 Negative
+    - Disease 'memory': 10 Positive, 410 Negative
+    - Disease 'psych': 66 Positive, 339 Negative
+    - Disease 'strok': 34 Positive, 362 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: cancr | Fold: 4 ---
+  - Total Test Edges: 3294 (Positive: 1098, Negative: 2196)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 362 Positive, 99 Negative
+    - Disease 'diab': 124 Positive, 283 Negative
+    - Disease 'heart': 121 Positive, 278 Negative
+    - Disease 'hibp': 334 Positive, 110 Negative
+    - Disease 'lung': 52 Positive, 316 Negative
+    - Disease 'memory': 13 Positive, 374 Negative
+    - Disease 'psych': 59 Positive, 355 Negative
+    - Disease 'strok': 33 Positive, 381 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: cancr | Fold: 5 ---
+  - Total Test Edges: 3294 (Positive: 1098, Negative: 2196)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 374 Positive, 104 Negative
+    - Disease 'diab': 114 Positive, 301 Negative
+    - Disease 'heart': 134 Positive, 270 Negative
+    - Disease 'hibp': 338 Positive, 107 Negative
+    - Disease 'lung': 45 Positive, 341 Negative
+    - Disease 'memory': 11 Positive, 407 Negative
+    - Disease 'psych': 55 Positive, 327 Negative
+    - Disease 'strok': 27 Positive, 339 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: lung | Fold: 1 ---
+  - Total Test Edges: 1925 (Positive: 733, Negative: 1192)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 232 Positive, 43 Negative
+    - Disease 'cancr': 74 Positive, 170 Negative
+    - Disease 'diab': 65 Positive, 167 Negative
+    - Disease 'heart': 95 Positive, 114 Negative
+    - Disease 'hibp': 163 Positive, 75 Negative
+    - Disease 'memory': 7 Positive, 246 Negative
+    - Disease 'psych': 72 Positive, 154 Negative
+    - Disease 'strok': 25 Positive, 223 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: hibp | Fold: 1 ---
+  - Total Test Edges: 10767 (Positive: 3589, Negative: 7178)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 1582 Positive, 253 Negative
+    - Disease 'cancr': 332 Positive, 950 Negative
+    - Disease 'diab': 529 Positive, 800 Negative
+    - Disease 'heart': 525 Positive, 803 Negative
+    - Disease 'lung': 187 Positive, 1071 Negative
+    - Disease 'memory': 51 Positive, 1207 Negative
+    - Disease 'psych': 244 Positive, 983 Negative
+    - Disease 'strok': 139 Positive, 1111 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: hibp | Fold: 1 ---
+  - Total Test Edges: 10767 (Positive: 3589, Negative: 7178)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 1582 Positive, 253 Negative
+    - Disease 'cancr': 332 Positive, 950 Negative
+    - Disease 'diab': 529 Positive, 800 Negative
+    - Disease 'heart': 525 Positive, 803 Negative
+    - Disease 'lung': 187 Positive, 1071 Negative
+    - Disease 'memory': 51 Positive, 1207 Negative
+    - Disease 'psych': 244 Positive, 983 Negative
+    - Disease 'strok': 139 Positive, 1111 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: hibp | Fold: 1 ---
+  - Total Test Edges: 10767 (Positive: 3589, Negative: 7178)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 1582 Positive, 253 Negative
+    - Disease 'cancr': 332 Positive, 950 Negative
+    - Disease 'diab': 529 Positive, 800 Negative
+    - Disease 'heart': 525 Positive, 803 Negative
+    - Disease 'lung': 187 Positive, 1071 Negative
+    - Disease 'memory': 51 Positive, 1207 Negative
+    - Disease 'psych': 244 Positive, 983 Negative
+    - Disease 'strok': 139 Positive, 1111 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: hibp | Fold: 1 ---
+  - Total Test Edges: 10767 (Positive: 3589, Negative: 7178)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 1582 Positive, 253 Negative
+    - Disease 'cancr': 332 Positive, 950 Negative
+    - Disease 'diab': 529 Positive, 800 Negative
+    - Disease 'heart': 525 Positive, 803 Negative
+    - Disease 'lung': 187 Positive, 1071 Negative
+    - Disease 'memory': 51 Positive, 1207 Negative
+    - Disease 'psych': 244 Positive, 983 Negative
+    - Disease 'strok': 139 Positive, 1111 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: hibp | Fold: 1 ---
+  - Total Test Edges: 10767 (Positive: 3589, Negative: 7178)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 1582 Positive, 253 Negative
+    - Disease 'cancr': 332 Positive, 950 Negative
+    - Disease 'diab': 529 Positive, 800 Negative
+    - Disease 'heart': 525 Positive, 803 Negative
+    - Disease 'lung': 187 Positive, 1071 Negative
+    - Disease 'memory': 51 Positive, 1207 Negative
+    - Disease 'psych': 244 Positive, 983 Negative
+    - Disease 'strok': 139 Positive, 1111 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: hibp | Fold: 1 ---
+  - Total Test Edges: 10767 (Positive: 3589, Negative: 7178)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 1582 Positive, 253 Negative
+    - Disease 'cancr': 332 Positive, 950 Negative
+    - Disease 'diab': 529 Positive, 800 Negative
+    - Disease 'heart': 525 Positive, 803 Negative
+    - Disease 'lung': 187 Positive, 1071 Negative
+    - Disease 'memory': 51 Positive, 1207 Negative
+    - Disease 'psych': 244 Positive, 983 Negative
+    - Disease 'strok': 139 Positive, 1111 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: hibp | Fold: 1 ---
+  - Total Test Edges: 10767 (Positive: 3589, Negative: 7178)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 1582 Positive, 253 Negative
+    - Disease 'cancr': 332 Positive, 950 Negative
+    - Disease 'diab': 529 Positive, 800 Negative
+    - Disease 'heart': 525 Positive, 803 Negative
+    - Disease 'lung': 187 Positive, 1071 Negative
+    - Disease 'memory': 51 Positive, 1207 Negative
+    - Disease 'psych': 244 Positive, 983 Negative
+    - Disease 'strok': 139 Positive, 1111 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: hibp | Fold: 1 ---
+  - Total Test Edges: 10767 (Positive: 3589, Negative: 7178)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 1582 Positive, 253 Negative
+    - Disease 'cancr': 332 Positive, 950 Negative
+    - Disease 'diab': 529 Positive, 800 Negative
+    - Disease 'heart': 525 Positive, 803 Negative
+    - Disease 'lung': 187 Positive, 1071 Negative
+    - Disease 'memory': 51 Positive, 1207 Negative
+    - Disease 'psych': 244 Positive, 983 Negative
+    - Disease 'strok': 139 Positive, 1111 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: hibp | Fold: 1 ---
+  - Total Test Edges: 10767 (Positive: 3589, Negative: 7178)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 1582 Positive, 253 Negative
+    - Disease 'cancr': 332 Positive, 950 Negative
+    - Disease 'diab': 529 Positive, 800 Negative
+    - Disease 'heart': 525 Positive, 803 Negative
+    - Disease 'lung': 187 Positive, 1071 Negative
+    - Disease 'memory': 51 Positive, 1207 Negative
+    - Disease 'psych': 244 Positive, 983 Negative
+    - Disease 'strok': 139 Positive, 1111 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: hibp | Fold: 1 ---
+  - Total Test Edges: 10767 (Positive: 3589, Negative: 7178)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 1582 Positive, 253 Negative
+    - Disease 'cancr': 332 Positive, 950 Negative
+    - Disease 'diab': 529 Positive, 800 Negative
+    - Disease 'heart': 525 Positive, 803 Negative
+    - Disease 'lung': 187 Positive, 1071 Negative
+    - Disease 'memory': 51 Positive, 1207 Negative
+    - Disease 'psych': 244 Positive, 983 Negative
+    - Disease 'strok': 139 Positive, 1111 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: hibp | Fold: 1 ---
+  - Total Test Edges: 10767 (Positive: 3589, Negative: 7178)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 1582 Positive, 253 Negative
+    - Disease 'cancr': 332 Positive, 950 Negative
+    - Disease 'diab': 529 Positive, 800 Negative
+    - Disease 'heart': 525 Positive, 803 Negative
+    - Disease 'lung': 187 Positive, 1071 Negative
+    - Disease 'memory': 51 Positive, 1207 Negative
+    - Disease 'psych': 244 Positive, 983 Negative
+    - Disease 'strok': 139 Positive, 1111 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: hibp | Fold: 1 ---
+  - Total Test Edges: 10767 (Positive: 3589, Negative: 7178)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 1582 Positive, 253 Negative
+    - Disease 'cancr': 332 Positive, 950 Negative
+    - Disease 'diab': 529 Positive, 800 Negative
+    - Disease 'heart': 525 Positive, 803 Negative
+    - Disease 'lung': 187 Positive, 1071 Negative
+    - Disease 'memory': 51 Positive, 1207 Negative
+    - Disease 'psych': 244 Positive, 983 Negative
+    - Disease 'strok': 139 Positive, 1111 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: hibp | Fold: 1 ---
+  - Total Test Edges: 10767 (Positive: 3589, Negative: 7178)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 1582 Positive, 253 Negative
+    - Disease 'cancr': 332 Positive, 950 Negative
+    - Disease 'diab': 529 Positive, 800 Negative
+    - Disease 'heart': 525 Positive, 803 Negative
+    - Disease 'lung': 187 Positive, 1071 Negative
+    - Disease 'memory': 51 Positive, 1207 Negative
+    - Disease 'psych': 244 Positive, 983 Negative
+    - Disease 'strok': 139 Positive, 1111 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: hibp | Fold: 1 ---
+  - Total Test Edges: 10767 (Positive: 3589, Negative: 7178)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 1582 Positive, 253 Negative
+    - Disease 'cancr': 332 Positive, 950 Negative
+    - Disease 'diab': 529 Positive, 800 Negative
+    - Disease 'heart': 525 Positive, 803 Negative
+    - Disease 'lung': 187 Positive, 1071 Negative
+    - Disease 'memory': 51 Positive, 1207 Negative
+    - Disease 'psych': 244 Positive, 983 Negative
+    - Disease 'strok': 139 Positive, 1111 Negative
+-------------------------------------------------------
+
+--- Wave: 10 | Fixed Disease: hibp | Fold: 1 ---
+  - Total Test Edges: 10767 (Positive: 3589, Negative: 7178)
+  - Per-Disease Distribution:
+    - Disease 'arthr': 1582 Positive, 253 Negative
+    - Disease 'cancr': 332 Positive, 950 Negative
+    - Disease 'diab': 529 Positive, 800 Negative
+    - Disease 'heart': 525 Positive, 803 Negative
+    - Disease 'lung': 187 Positive, 1071 Negative
+    - Disease 'memory': 51 Positive, 1207 Negative
+    - Disease 'psych': 244 Positive, 983 Negative
+    - Disease 'strok': 139 Positive, 1111 Negative
+-------------------------------------------------------
+

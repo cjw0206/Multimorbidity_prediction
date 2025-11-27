@@ -1,0 +1,271 @@
+
+
+########################################
+### RESULTS FOR WAVE10 ###
+########################################
+
+==============================
+   MODEL: GIN_MOE
+==============================
+
+--- Scenario: Fixed Disease 'HIBP' ---
+  - Fixed Hyperparameters Used:
+    - model_type     : gin_moe
+    - lr             : 0.002
+    - hidden_dim     : 128
+    - n_layers       : 3
+    - dropout        : 0.3
+    - weight_decay   : 0.005
+    - pred_hidden    : 128
+    - pred_dropout   : 0.3
+    - max_epochs     : 150
+    - gin_mlp_layers : 2
+
+  - Final CV Test Metrics (Mean ± Std Dev):
+    - accuracy                 : 0.7248 ± 0.0076
+    - auprc                    : 0.6141 ± 0.0438
+    - auroc                    : 0.7402 ± 0.0264
+    - f1_macro                 : 0.2653 ± 0.0563
+    - f1                       : 0.5233 ± 0.0731
+    - macro_auprc              : 0.3501 ± 0.0057
+    - macro_auroc              : 0.5830 ± 0.0062
+    - macro_recall             : 0.2572 ± 0.0728
+    - precision                : 0.6271 ± 0.0472
+    - recall                   : 0.4694 ± 0.1114
+
+--------------------------------------------------
+
+--- Scenario: Fixed Disease 'DIAB' ---
+  - Fixed Hyperparameters Used:
+    - model_type     : gin_moe
+    - lr             : 0.002
+    - hidden_dim     : 128
+    - n_layers       : 3
+    - dropout        : 0.3
+    - weight_decay   : 0.005
+    - pred_hidden    : 128
+    - pred_dropout   : 0.3
+    - max_epochs     : 150
+    - gin_mlp_layers : 2
+
+  - Final CV Test Metrics (Mean ± Std Dev):
+    - accuracy                 : 0.8046 ± 0.0085
+    - auprc                    : 0.7454 ± 0.0042
+    - auroc                    : 0.8361 ± 0.0113
+    - f1_macro                 : 0.2592 ± 0.0310
+    - f1                       : 0.6786 ± 0.0328
+    - macro_auprc              : 0.3794 ± 0.0053
+    - macro_auroc              : 0.5944 ± 0.0047
+    - macro_recall             : 0.2649 ± 0.0422
+    - precision                : 0.7886 ± 0.0426
+    - recall                   : 0.6024 ± 0.0658
+
+--------------------------------------------------
+
+--- Scenario: Fixed Disease 'CANCR' ---
+  - Fixed Hyperparameters Used:
+    - model_type     : gin_moe
+    - lr             : 0.002
+    - hidden_dim     : 128
+    - n_layers       : 3
+    - dropout        : 0.3
+    - weight_decay   : 0.005
+    - pred_hidden    : 128
+    - pred_dropout   : 0.3
+    - max_epochs     : 150
+    - gin_mlp_layers : 2
+
+  - Final CV Test Metrics (Mean ± Std Dev):
+    - accuracy                 : 0.7244 ± 0.0131
+    - auprc                    : 0.5987 ± 0.0450
+    - auroc                    : 0.7488 ± 0.0274
+    - f1_macro                 : 0.3113 ± 0.0444
+    - f1                       : 0.5677 ± 0.0438
+    - macro_auprc              : 0.3635 ± 0.0095
+    - macro_auroc              : 0.5666 ± 0.0048
+    - macro_recall             : 0.3315 ± 0.0461
+    - precision                : 0.5929 ± 0.0144
+    - recall                   : 0.5483 ± 0.0723
+
+--------------------------------------------------
+
+--- Scenario: Fixed Disease 'LUNG' ---
+  - Fixed Hyperparameters Used:
+    - model_type     : gin_moe
+    - lr             : 0.002
+    - hidden_dim     : 128
+    - n_layers       : 3
+    - dropout        : 0.3
+    - weight_decay   : 0.005
+    - pred_hidden    : 128
+    - pred_dropout   : 0.3
+    - max_epochs     : 150
+    - gin_mlp_layers : 2
+
+  - Final CV Test Metrics (Mean ± Std Dev):
+    - accuracy                 : 0.6797 ± 0.0881
+    - auprc                    : 0.6179 ± 0.1208
+    - auroc                    : 0.7200 ± 0.0984
+    - f1_macro                 : 0.2997 ± 0.0588
+    - f1                       : 0.5204 ± 0.1112
+    - macro_auprc              : 0.4217 ± 0.0102
+    - macro_auroc              : 0.5646 ± 0.0204
+    - macro_recall             : 0.3134 ± 0.1218
+    - precision                : 0.6304 ± 0.1377
+    - recall                   : 0.4565 ± 0.1043
+
+--------------------------------------------------
+
+--- Scenario: Fixed Disease 'HEART' ---
+  - Fixed Hyperparameters Used:
+    - model_type     : gin_moe
+    - lr             : 0.002
+    - hidden_dim     : 128
+    - n_layers       : 3
+    - dropout        : 0.3
+    - weight_decay   : 0.005
+    - pred_hidden    : 128
+    - pred_dropout   : 0.3
+    - max_epochs     : 150
+    - gin_mlp_layers : 2
+
+  - Final CV Test Metrics (Mean ± Std Dev):
+    - accuracy                 : 0.7558 ± 0.0405
+    - auprc                    : 0.6867 ± 0.0341
+    - auroc                    : 0.7929 ± 0.0195
+    - f1_macro                 : 0.2193 ± 0.0785
+    - f1                       : 0.5492 ± 0.1710
+    - macro_auprc              : 0.3779 ± 0.0061
+    - macro_auroc              : 0.5704 ± 0.0106
+    - macro_recall             : 0.2273 ± 0.1086
+    - precision                : 0.7577 ± 0.0730
+    - recall                   : 0.4752 ± 0.1864
+
+--------------------------------------------------
+
+--- Scenario: Fixed Disease 'STROK' ---
+  - Fixed Hyperparameters Used:
+    - model_type     : gin_moe
+    - lr             : 0.002
+    - hidden_dim     : 128
+    - n_layers       : 3
+    - dropout        : 0.3
+    - weight_decay   : 0.005
+    - pred_hidden    : 128
+    - pred_dropout   : 0.3
+    - max_epochs     : 150
+    - gin_mlp_layers : 2
+
+  - Final CV Test Metrics (Mean ± Std Dev):
+    - accuracy                 : 0.6857 ± 0.0539
+    - auprc                    : 0.6607 ± 0.0537
+    - auroc                    : 0.7284 ± 0.0172
+    - f1_macro                 : 0.3955 ± 0.0846
+    - f1                       : 0.6235 ± 0.0045
+    - macro_auprc              : 0.4613 ± 0.0105
+    - macro_auroc              : 0.5797 ± 0.0124
+    - macro_recall             : 0.4606 ± 0.1682
+    - precision                : 0.6381 ± 0.0939
+    - recall                   : 0.6442 ± 0.1234
+
+--------------------------------------------------
+
+--- Scenario: Fixed Disease 'PSYCH' ---
+  - Fixed Hyperparameters Used:
+    - model_type     : gin_moe
+    - lr             : 0.002
+    - hidden_dim     : 128
+    - n_layers       : 3
+    - dropout        : 0.3
+    - weight_decay   : 0.005
+    - pred_hidden    : 128
+    - pred_dropout   : 0.3
+    - max_epochs     : 150
+    - gin_mlp_layers : 2
+
+  - Final CV Test Metrics (Mean ± Std Dev):
+    - accuracy                 : 0.7116 ± 0.0458
+    - auprc                    : 0.6295 ± 0.0950
+    - auroc                    : 0.7467 ± 0.0567
+    - f1_macro                 : 0.2915 ± 0.0438
+    - f1                       : 0.5568 ± 0.1036
+    - macro_auprc              : 0.4103 ± 0.0100
+    - macro_auroc              : 0.5801 ± 0.0085
+    - macro_recall             : 0.3101 ± 0.0782
+    - precision                : 0.6568 ± 0.0734
+    - recall                   : 0.5002 ± 0.1248
+
+--------------------------------------------------
+
+--- Scenario: Fixed Disease 'ARTHR' ---
+  - Fixed Hyperparameters Used:
+    - model_type     : gin_moe
+    - lr             : 0.002
+    - hidden_dim     : 128
+    - n_layers       : 3
+    - dropout        : 0.3
+    - weight_decay   : 0.005
+    - pred_hidden    : 128
+    - pred_dropout   : 0.3
+    - max_epochs     : 150
+    - gin_mlp_layers : 2
+
+  - Final CV Test Metrics (Mean ± Std Dev):
+    - accuracy                 : 0.7152 ± 0.0400
+    - auprc                    : 0.6444 ± 0.0314
+    - auroc                    : 0.7501 ± 0.0303
+    - f1_macro                 : 0.2848 ± 0.0877
+    - f1                       : 0.5580 ± 0.0639
+    - macro_auprc              : 0.3446 ± 0.0031
+    - macro_auroc              : 0.5802 ± 0.0041
+    - macro_recall             : 0.3279 ± 0.1466
+    - precision                : 0.6130 ± 0.0968
+    - recall                   : 0.5589 ± 0.1534
+
+--------------------------------------------------
+
+--- Scenario: Fixed Disease 'MEMORY' ---
+  - Fixed Hyperparameters Used:
+    - model_type     : gin_moe
+    - lr             : 0.002
+    - hidden_dim     : 128
+    - n_layers       : 3
+    - dropout        : 0.3
+    - weight_decay   : 0.005
+    - pred_hidden    : 128
+    - pred_dropout   : 0.3
+    - max_epochs     : 150
+    - gin_mlp_layers : 2
+
+  - Final CV Test Metrics (Mean ± Std Dev):
+    - accuracy                 : 0.6435 ± 0.0471
+    - auprc                    : 0.5743 ± 0.0676
+    - auroc                    : 0.6339 ± 0.0450
+    - f1_macro                 : 0.3511 ± 0.0283
+    - f1                       : 0.4877 ± 0.0655
+    - macro_auprc              : 0.4854 ± 0.0111
+    - macro_auroc              : 0.5524 ± 0.0081
+    - macro_recall             : 0.3308 ± 0.0374
+    - precision                : 0.6010 ± 0.0944
+    - recall                   : 0.4167 ± 0.0719
+
+--------------------------------------------------
+
+
+SUMMARY OF AUROC & AUPRC BY DISEASE
+--------------------------------------------------
+Disease                       AUROC     AUPRC
+--------------------------------------------------
+hibp                         0.7402    0.6141
+diab                         0.8361    0.7454
+cancr                        0.7488    0.5987
+lung                         0.7200    0.6179
+heart                        0.7929    0.6867
+strok                        0.7284    0.6607
+psych                        0.7467    0.6295
+arthr                        0.7501    0.6444
+memory                       0.6339    0.5743
+--------------------------------------------------
+Mean                         0.7441    0.6413
+==================================================
+
