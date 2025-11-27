@@ -1,5 +1,0 @@
-### HYPERPARAMETER TUNING RESULTS (AUTO-SAVED PER COMBINATION, SORTED) ###
-
-PARAMS	AUROC	AUPRC
-lr=0.0001_dropout=0.3_n_layers=3_num_heads=16_weight_decay=0.001	0.8219	0.8149
-lr=0.001_dropout=0.3_n_layers=3_num_heads=16_weight_decay=0.001	0.8171	0.8116
