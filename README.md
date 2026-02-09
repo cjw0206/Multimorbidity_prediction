@@ -1,5 +1,6 @@
 # Multimorbidity Prediction via a Mixture-of-Experts Approach on a Patient-Disease Network
 
+## Abstract
 - **Problem:** Multimorbidity refers to the co-occurrence of multiple chronic conditions and can strongly affect a patient’s health course and treatment decisions.
 - **Challenge:** The large variety of disease combinations and their irregular progression make accurate prediction difficult with standard statistical models or deep learning approaches.
 - **Gap in prior work:** Many studies rely mainly on clinical variables from EHRs, limiting the use of non-clinical factors such as social and environmental conditions.
