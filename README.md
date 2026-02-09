@@ -7,7 +7,7 @@
 
 - **Data:** Health and Retirement Study (HRS)
 - **Key idea:** Build a patient–disease heterogeneous network and formulate multimorbidity prediction as link prediction (patient ↔ disease).
-- **Method:**
+- **Methods:**
   - Use a **Graph Isomorhpism Network (GIN)** to learn node embeddings.
   - Use a **Mixture of Experts (MoE)** link predictor to model patient–disease interactions at the edge level.
   - The predictor has **four experts**, each combining node representations differently to capture complementary interaction patterns.
