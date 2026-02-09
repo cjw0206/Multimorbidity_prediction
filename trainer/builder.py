@@ -37,6 +37,8 @@ class MLPPredictor(nn.Module):
                 fixed_nid: Optional[int] = None, **kwargs):
         u, v = g.find_edges(eids) if uv is None else uv
         return self.mlp(torch.cat([z[u], z[v]], dim=-1))
+    def count_params(self):
+        return sum(p.numel() for p in self.parameters() if p.requires_grad)
     
 class EdgeMoEPredictor(nn.Module):
     """
@@ -47,7 +49,7 @@ class EdgeMoEPredictor(nn.Module):
     def __init__(self, in_dim: int, hidden_dim: int, out_dim: int,
                  dropout: float = 0.2, num_experts: int = 4, top_k: int=1,):
         super().__init__()
-        assert num_experts == 4, "현재 구현은 4개 expert에 맞춰져 있음"
+        # assert num_experts == 4, "현재 구현은 4개 expert에 맞춰져 있음"
         self.num_experts = num_experts
         self.dropout = nn.Dropout(dropout)
         self.top_k = top_k
@@ -99,6 +101,9 @@ class EdgeMoEPredictor(nn.Module):
         z_diff = torch.abs(z_u - z_v)               # (B, D)
         z_mul  = z_u * z_v                          # (B, D)
 
+        # edge_feat = torch.cat([z_diff, z_mul], dim=-1)  # (B, 2D)
+        # edge_feat = torch.cat([z_cat, z_mul], dim=-1)  # (B, 3D)
+        # edge_feat = torch.cat([z_cat, z_diff], dim=-1)  # (B, 3D)
         edge_feat = torch.cat([z_cat, z_diff, z_mul], dim=-1)  # (B, 4D)
 
         # 1) 각 expert의 score 계산
@@ -107,7 +112,10 @@ class EdgeMoEPredictor(nn.Module):
         s3 = self.expert_mul(z_mul)       # (B, out_dim)
         s4 = self.expert_all(edge_feat)   # (B, out_dim)
 
-        scores = torch.stack([s1, s2, s3, s4], dim=1)  # (B, 4, out_dim)
+        # scores = torch.stack([s2, s3, s4], dim=1)  # (B, 3, out_dim)
+        scores = torch.stack([s1, s2, s3, s4], dim=1)  # (B, 3, out_dim)
+        # scores = torch.stack([s1, s2, s4], dim=1)  # (B, 3, out_dim)
+        # scores = torch.stack([s1, s2, s3], dim=1)  # (B, 3, out_dim)
 
         # 2) 게이트로 mixture weight 계산
         gate_logits = self.gate(edge_feat)           # (B, 4)
@@ -149,8 +157,18 @@ class EdgeMoEPredictor(nn.Module):
         # usage가 한쪽으로 쏠리지 않게 L2 penalty
         aux_loss = (avg_expert_usage ** 2).sum() * self.num_experts
 
-        return out, aux_loss
+        # return out, aux_loss
+        return out, aux_loss, topk_idx
 
+    def count_params(self):
+        def cnt(m): return sum(p.numel() for p in m.parameters() if p.requires_grad)
+        total = 0
+        total += cnt(self.expert_concat)
+        total += cnt(self.expert_dist)
+        total += cnt(self.expert_mul)
+        total += cnt(self.expert_all)
+        total += cnt(self.gate)
+        return total
 
 class HeteroProjectionGNN(nn.Module):
     """
@@ -379,20 +397,20 @@ class HeteroProjectionGraphormer(nn.Module):
         })
 
         # Graphormer backbone
-        # self.encoder = GraphormerEncoder(
-        #     hidden_dim=hidden_dim,
-        #     num_heads=params.get('num_heads', 4),
-        #     num_layers=params.get('n_layers', 2),
-        #     dropout=params.get('dropout', 0.1)
-        # )
-
-        # Graphormer MoE backbone
-        self.encoder = GraphormerEncoderMoE(
+        self.encoder = GraphormerEncoder(
             hidden_dim=hidden_dim,
             num_heads=params.get('num_heads', 4),
-            num_layers=params.get('n_layers', 1),
+            num_layers=params.get('n_layers', 2),
             dropout=params.get('dropout', 0.1)
         )
+
+        # Graphormer MoE backbone
+        # self.encoder = GraphormerEncoderMoE(
+        #     hidden_dim=hidden_dim,
+        #     num_heads=params.get('num_heads', 4),
+        #     num_layers=params.get('n_layers', 1),
+        #     dropout=params.get('dropout', 0.1)
+        # )
 
         # 노드 타입 매핑
         self.ntype_map = {ntype: i for i, ntype in enumerate(g_hetero.ntypes)}
@@ -416,21 +434,21 @@ class HeteroProjectionGraphormer(nn.Module):
         edge_index = torch.stack([src, dst], dim=0).to(features.device)
 
         # Graphormer 인코딩
-        # z = self.encoder(projected_feats, edge_index)
-        # return z
+        z = self.encoder(projected_feats, edge_index)
+        return z
         # GraphormerMoE 인코딩
-        z, aux_loss = self.encoder(projected_feats, edge_index)
-        return z, aux_loss
+        # z, aux_loss = self.encoder(projected_feats, edge_index)
+        # return z, aux_loss
 
-    # def forward_edges(self, g, features, predictor, uv):
-    #     z = self.forward(g, features)
-    #     logits = predictor(g, z, uv=uv)
-    #     return logits
-    
     def forward_edges(self, g, features, predictor, uv):
-        z, aux_loss = self.forward(g, features)
+        z = self.forward(g, features)
         logits = predictor(g, z, uv=uv)
-        return logits, aux_loss
+        return logits
+    
+    # def forward_edges(self, g, features, predictor, uv):
+    #     z, aux_loss = self.forward(g, features)
+    #     logits = predictor(g, z, uv=uv)
+    #     return logits, aux_loss
 
 
 class HeteroProjectionMoEFusion(nn.Module):
@@ -530,6 +548,7 @@ def create_model_and_predictor(params: Dict, settings: Settings,
 
     if params['model_type'] in ["multi_graph_pred_moe"]:
         predictor = EdgeMoEPredictor(params['hidden_dim'], params['pred_hidden']*2, 1, params['pred_dropout'], 4, top_k=params['top_k'])
+        # predictor = MLPPredictor(params['hidden_dim'], params['pred_hidden'], 1, params['pred_dropout'])
     else:
         predictor = MLPPredictor(params['hidden_dim'], params['pred_hidden'], 1, params['pred_dropout'])
     return model, predictor

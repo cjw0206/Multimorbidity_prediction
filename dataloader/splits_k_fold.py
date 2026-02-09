@@ -3,6 +3,7 @@ from typing import Tuple, Dict
 import numpy as np
 import pandas as pd
 import torch
+from sklearn.model_selection import KFold
 
 from core.config import Settings, IDX_TO_DISEASE
 from core.utils import torch_long
@@ -18,7 +19,8 @@ def split_data_by_fixed_disease(
     disease_h2h: torch.Tensor,
     fixed_disease_idx: int,
     settings: Settings,
-    disease_id_map: Dict[str, int]          # <<< 추가
+    disease_id_map: Dict[str, int],          # <<< 추가
+    fold_num: int # k 폴드에 추가
 ) -> Tuple[Tuple, torch.Tensor, Tuple, torch.Tensor, Dict]:
     
     # 특정 '고정 질병'을 가진 복합질환자를 대상으로 데이터 분할
@@ -72,22 +74,42 @@ def split_data_by_fixed_disease(
 
     # 3-3 ) 절충안 : 전체 edge로 나누지만 모든 환자별로 최소 1개의 test edge를 갖도록
     # 각 환자별로 1개의 엣지를 무작위로 추출하여 '최소 보장' Test 엣지 생성
-    guaranteed_edges = potential_test_pos_df.groupby('person_typed_id').sample(
-        n=1, random_state=settings.seed
+    # guaranteed_edges = potential_test_pos_df.groupby('person_typed_id').sample(
+    #     n=1, random_state=settings.seed
+    # )
+    # # 전체 비율에 따라 필요한 총 Test 엣지 개수 계산
+    # total_required_test_size = int(len(potential_test_pos_df) * settings.test_sampling_ratio)
+    # # 추가로 샘플링해야 할 엣지 개수 계산
+    # num_additional_samples = max(0, total_required_test_size - len(guaranteed_edges))
+    # # '최소 보장' 엣지를 제외한 나머지 엣지 풀(pool) 생성
+    # remaining_pool = potential_test_pos_df.drop(guaranteed_edges.index)
+    # # 나머지 풀에서 추가 엣지를 무작위 샘플링
+    # additional_edges = remaining_pool.sample(
+    #     n=min(num_additional_samples, len(remaining_pool)), 
+    #     random_state=settings.seed
+    # )
+    # # '최소 보장' 엣지와 '추가' 엣지를 합쳐 최종 Test set 구성
+    # test_pos_df = pd.concat([guaranteed_edges, additional_edges])
+
+    # ▼▼▼▼▼ 2. K-Fold 로직으로 교체 ▼▼▼▼▼
+    kf = KFold(
+        n_splits=settings.n_folds, 
+        shuffle=True, 
+        random_state=settings.kfold_split_seed # 1단계에서 추가한 고정 시드 사용
     )
-    # 전체 비율에 따라 필요한 총 Test 엣지 개수 계산
-    total_required_test_size = int(len(potential_test_pos_df) * settings.test_sampling_ratio)
-    # 추가로 샘플링해야 할 엣지 개수 계산
-    num_additional_samples = max(0, total_required_test_size - len(guaranteed_edges))
-    # '최소 보장' 엣지를 제외한 나머지 엣지 풀(pool) 생성
-    remaining_pool = potential_test_pos_df.drop(guaranteed_edges.index)
-    # 나머지 풀에서 추가 엣지를 무작위 샘플링
-    additional_edges = remaining_pool.sample(
-        n=min(num_additional_samples, len(remaining_pool)), 
-        random_state=settings.seed
-    )
-    # '최소 보장' 엣지와 '추가' 엣지를 합쳐 최종 Test set 구성
-    test_pos_df = pd.concat([guaranteed_edges, additional_edges])
+    
+    # KFold를 적용할 데이터(potential_test_pos_df)의 인덱스를 5개로 분할
+    all_splits = list(kf.split(potential_test_pos_df))
+    
+    # 현재 fold_num에 해당하는 인덱스를 가져옴
+    # (run_cross_validation에서 fold_num은 1부터 시작하므로 -1)
+    # train_indices, test_indices = all_splits[settings.fold_num - 1] 
+    train_indices, test_indices = all_splits[fold_num - 1]
+
+    # 인덱스를 사용해 Test / Train DataFrame 생성
+    test_pos_df = potential_test_pos_df.iloc[test_indices]
+    train_pos_df = potential_test_pos_df.iloc[train_indices] # K-Fold는 test 외 나머지가 train임
+    # ▲▲▲▲▲ K-Fold 로직 교체 완료 ▲▲▲▲▲
 
     # --- 4. Train Positive 엣지 구성 ---
     # Test 엣지로 사용된 것을 제외한 나머지를 Train 엣지로 사용

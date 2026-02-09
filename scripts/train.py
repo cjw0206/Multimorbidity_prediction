@@ -11,20 +11,25 @@ warnings.filterwarnings("ignore")
 from core.config import Settings, IDX_TO_DISEASE
 from core.utils import ensure_dir     
 from dataloader.loader import load_data_for_wave
+# from dataloader.loader_zero_padding import load_data_for_wave
 from trainer import run_cross_validation  # __init__에서 export 가정
 
-FIXED_HYPERPARAMS = {
-        "gcn": {"model_type": "gcn", "lr": 0.002, "hidden_dim": 128, "n_layers": 3, "dropout": 0.3, "weight_decay": 5e-4, "pred_hidden": 128, "pred_dropout": 0.3, "max_epochs": 150, "using_moe":False},
-        "gat": {"model_type": "gat", "lr": 0.0001, "hidden_dim": 128, "n_layers": 2, "dropout": 0.3, "weight_decay": 5e-4, "pred_hidden": 128, "pred_dropout": 0.3, "max_epochs": 150, "num_heads": 4, "gat_attn_drop": 0.1, "gat_neg_slope": 0.2, "using_moe":False},
-        "gin": {"model_type": "gin", "lr": 0.002, "hidden_dim": 128, "n_layers": 3, "dropout": 0.3, "weight_decay": 5e-3, "pred_hidden": 128, "pred_dropout": 0.3, "max_epochs": 150, "gin_mlp_layers": 2, "using_moe":False},
+FIXED_HYPERPARAMS = {        
+        "gcn": {"model_type": "gcn", "lr": 0.002, "hidden_dim": 256, "n_layers": 3, "dropout": 0.3, "weight_decay": 5e-4, "pred_hidden": 128, "pred_dropout": 0.3, "max_epochs": 350, "using_moe":False},
+        "gat": {"model_type": "gat", "lr": 0.002, "hidden_dim": 256, "n_layers": 2, "dropout": 0.3, "weight_decay": 5e-4, "pred_hidden": 128, "pred_dropout": 0.3, "max_epochs": 350, "num_heads":4, "gat_attn_drop": 0.1, "gat_neg_slope": 0.2, "using_moe":False},
+        "gin": {"model_type": "gin", "lr": 0.002, "hidden_dim": 256, "n_layers": 3, "dropout": 0.3, "weight_decay": 5e-3, "pred_hidden": 128, "pred_dropout": 0.3, "max_epochs": 350, "gin_mlp_layers": 2, "using_moe":False},
         "gin_moe": {"model_type": "gin_moe", "lr": 0.0001, "hidden_dim": 256, "n_layers": 3, "dropout": 0.2, "weight_decay": 1e-3, "pred_hidden": 128, "pred_dropout": 0.3, "max_epochs": 150, "gin_mlp_layers": 2, "using_moe":True},
         "gcn_moe": {"model_type": "gcn_moe", "lr": 0.002, "hidden_dim": 128, "n_layers": 3, "dropout": 0.3, "weight_decay": 5e-4, "pred_hidden": 128, "pred_dropout": 0.3, "max_epochs": 150, "using_moe":True},
         "multi_graph": {"model_type": "multi_graph", "lr": 0.002, "hidden_dim": 128, "n_layers": 3, "dropout": 0.3, "weight_decay": 5e-4, "pred_hidden": 128, "pred_dropout": 0.3, "max_epochs": 150, "num_heads": 4, "gat_attn_drop": 0.1, "gat_neg_slope": 0.2, "gin_mlp_layers": 2, "using_moe":False},
-        "multi_graph_pred_moe": {"model_type": "multi_graph_pred_moe", "lr": 2e-5, "hidden_dim": 512, "n_layers": 3, "dropout": 0.3,
-                    "weight_decay": 1e-3, "pred_hidden": 256, "pred_dropout": 0.1,
-                    "max_epochs": 150, "num_heads": 16, "gat_attn_drop": 0.1,
-                    "gat_neg_slope": 0.2, "gin_mlp_layers": 2, "using_moe": True, "top_k": 3},
-        "graphormer": {"model_type": "graphormer", "batch_size": 512 ,"lr": 0.002, "hidden_dim": 32, "n_layers": 2, "dropout": 0.3, "weight_decay": 5e-4, "pred_hidden": 128, "pred_dropout": 0.3, "max_epochs": 150, "num_heads" : 4, "using_moe":False},
+        # "multi_graph_pred_moe": {"model_type": "multi_graph_pred_moe", "lr": 2e-5, "hidden_dim": 512, "n_layers": 3, "dropout": 0.3,
+        #             "weight_decay": 1e-3, "pred_hidden": 256, "pred_dropout": 0.1,
+        #             "max_epochs": 150, "num_heads": 16, "gat_attn_drop": 0.1,
+        #             "gat_neg_slope": 0.2, "gin_mlp_layers": 2, "using_moe": True, "top_k": 3},
+        "multi_graph_pred_moe": {"model_type": "multi_graph_pred_moe", "lr": 5e-5, "hidden_dim": 1024, "n_layers": 2, "dropout": 0.3,
+                    "weight_decay": 1e-3, "pred_hidden": 256, "pred_dropout": 0.3,
+                    "max_epochs": 350, "num_heads": 16, "gat_attn_drop": 0.1,
+                    "gat_neg_slope": 0.2, "gin_mlp_layers": 2, "using_moe": True, "top_k": 1},
+        "graphormer": {"model_type": "graphormer", "batch_size": 512 ,"lr": 0.002, "hidden_dim": 32, "n_layers": 2, "dropout": 0.3, "weight_decay": 5e-4, "pred_hidden": 128, "pred_dropout": 0.3, "max_epochs": 350, "num_heads" : 4, "using_moe":False},
         "graphormer_moe": {"model_type": "graphormer_moe", "batch_size": 512 ,"lr": 0.002, "hidden_dim": 32, "n_layers": 1, "dropout": 0.3, "weight_decay": 5e-4, "pred_hidden": 128, "pred_dropout": 0.3, "max_epochs": 150, "num_heads" : 4, "using_moe":True}
     }
 
@@ -47,8 +52,8 @@ def main():
 
         # for model_key in ["gin_moe"]:
         # for model_key in ["multi_graph"]:
-        # for model_key in ["graphormer_moe"]:
-        # for model_key in ["gin"]: 
+        # for model_key in ["graphormer"]:
+        # for model_key in ["gcn"]: 
         for model_key in ["multi_graph_pred_moe"]:
             params = FIXED[model_key]
             all_results[wave_key][model_key] = {}

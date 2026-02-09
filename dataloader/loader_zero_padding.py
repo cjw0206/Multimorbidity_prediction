@@ -132,13 +132,68 @@ def build_features_person_dynamic(csv_path: str, wave: int, person_id_map: Dict[
     feats_df = feats_df.reindex(index=sorted(person_id_map, key=person_id_map.get), fill_value=0.0)
     return feats_df.values.astype(np.float32)
 
+# def build_features_disease(disease_id_map: Dict[str, int], mode: str = "onehot", emb_dim: int = 16) -> np.ndarray:
+#     Nd = len(disease_id_map)
+#     if mode == "onehot":
+#         return np.eye(Nd, dtype=np.float32)
+#     else:
+#         rng = np.random.default_rng(7)
+#         return rng.normal(0, 0.01, size=(Nd, emb_dim)).astype(np.float32)
+
 def build_features_disease(disease_id_map: Dict[str, int], mode: str = "onehot", emb_dim: int = 16) -> np.ndarray:
     Nd = len(disease_id_map)
     if mode == "onehot":
         return np.eye(Nd, dtype=np.float32)
+    elif mode == "LLM":
+        file_path = "../graph/disease_omim_node_feature_16.csv"
+        df = pd.read_csv(file_path)
+        
+        # feature 컬럼: "[1, 0, 0, 1, ...]" 형태 → 문자열을 리스트로 변환
+        features = df["feature"].apply(lambda x: np.array(eval(x), dtype=np.float32))
+
+        # (Nd, 16) 형태의 float32 numpy array 로 변환
+        return np.stack(features.values, axis=0).astype(np.float32)
+    
+    elif mode == "BioBERT":
+        file_path = "../graph/omim_disease_BioLinkBERT-base_embeddings.csv"
+        df = pd.read_csv(file_path)
+        
+        features = df["feature"].apply(lambda x: np.array(eval(x), dtype=np.float32))
+
+        return np.stack(features.values, axis=0).astype(np.float32)
+
+    elif mode == "Ontology":
+        file_path = "../graph/disease_semantic_mean_pool_embeddings64_IEA_ND.csv"
+        df = pd.read_csv(file_path)
+        
+        # feature 컬럼: "[1, 0, 0, 1, ...]" 형태 → 문자열을 리스트로 변환
+        features = df["feature"].apply(lambda x: np.array(eval(x), dtype=np.float32))
+
+        # (Nd, 64) 형태의 float32 numpy array 로 변환
+        return np.stack(features.values, axis=0).astype(np.float32)
+    
+    elif mode == "LLM_Onto":
+        # LLM (16차원) feature 로드
+        llm_path = "../graph/disease_omim_node_feature_16.csv"
+        df_llm = pd.read_csv(llm_path)
+        llm_features = df_llm["feature"].apply(lambda x: np.array(eval(x), dtype=np.float32))
+        llm_array = np.stack(llm_features.values, axis=0).astype(np.float32)   # (Nd, 16)
+
+        # Ontology (64차원) feature 로드
+        onto_path = "../graph/disease_semantic_mean_pool_embeddings64.csv"
+        df_onto = pd.read_csv(onto_path)
+        onto_features = df_onto["feature"].apply(lambda x: np.array(eval(x), dtype=np.float32))
+        onto_array = np.stack(onto_features.values, axis=0).astype(np.float32)  # (Nd, 64)
+
+        # 행 순서가 동일하다고 가정하고 feature 차원 기준으로 concat → (Nd, 80)
+        combined = np.concatenate([llm_array, onto_array], axis=1).astype(np.float32)
+
+        return combined
+        
     else:
         rng = np.random.default_rng(7)
         return rng.normal(0, 0.01, size=(Nd, emb_dim)).astype(np.float32)
+
 
 # homo-graph
 # (수정 제안) 패딩을 수행하지 않고 원본 피처를 그대로 붙이는 함수
@@ -163,15 +218,15 @@ def attach_raw_features_and_to_homo(g_hetero, person_X, disease_X):
     return g_homo, person_dim, disease_dim
 
 # # hetero-graph
-# def attach_features_hetero(g_hetero, person_X, disease_X, in_dim_pad=None):
-#     P_dim, D_dim = person_X.shape[1], disease_X.shape[1]
-#     in_dim = max(P_dim, D_dim) if in_dim_pad is None else max(in_dim_pad, P_dim, D_dim)
-#     # 두 타입 입력 차원 맞추기(제로 패딩)
-#     person_X = pad_right_with_zeros(person_X, in_dim)
-#     disease_X = pad_right_with_zeros(disease_X, in_dim)
-#     g_hetero.nodes["person"].data["feat"]  = torch_float(person_X)
-#     g_hetero.nodes["disease"].data["feat"] = torch_float(disease_X)
-#     return g_hetero, in_dim
+def attach_features_hetero(g_hetero, person_X, disease_X, in_dim_pad=None):
+    P_dim, D_dim = person_X.shape[1], disease_X.shape[1]
+    in_dim = max(P_dim, D_dim) if in_dim_pad is None else max(in_dim_pad, P_dim, D_dim)
+    # 두 타입 입력 차원 맞추기(제로 패딩)
+    person_X = pad_right_with_zeros(person_X, in_dim)
+    disease_X = pad_right_with_zeros(disease_X, in_dim)
+    g_hetero.nodes["person"].data["feat"]  = torch_float(person_X)
+    g_hetero.nodes["disease"].data["feat"] = torch_float(disease_X)
+    return g_hetero, in_dim
 
 def build_homo_nid_maps(g_homo: dgl.DGLGraph,
                         g_hetero: dgl.DGLHeteroGraph) -> Dict[str, torch.Tensor]:

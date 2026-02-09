@@ -1,6 +1,7 @@
 import math
 from typing import Dict, Optional, Tuple
 
+import os
 import numpy as np
 import torch
 import torch.nn as nn
@@ -24,7 +25,9 @@ def train_one_fold(g: DGLGraph, feats: torch.Tensor,
                    params: Dict, settings: Settings, g_hetero,
                    person_dim: int, disease_dim: int, # << 추가
                    progress_desc: Optional[str] = None,
-                   eval_info: Optional[Dict] = None) -> Dict[str, Dict[str, float]]:
+                   eval_info: Optional[Dict] = None,
+                   disease_name: str = None,
+                   fold_num: str = None) -> Dict[str, Dict[str, float]]:
     device = settings.device
     g = g.to(device)
     feats = feats.to(device)
@@ -66,11 +69,53 @@ def train_one_fold(g: DGLGraph, feats: torch.Tensor,
         if not params["using_moe"]:
             logits = model.forward_edges(g, feats, predictor, uv=(train_u, train_v)).squeeze(-1)
             loss = loss_fn(logits, train_y.float())
-        else:
-            logits, moe_loss = model.forward_edges(g, feats, predictor, uv=(train_u, train_v))
+        # else:
+        #     logits, moe_loss = model.forward_edges(g, feats, predictor, uv=(train_u, train_v))
+        #     logits = logits.squeeze(-1)
+        #     loss = loss_fn(logits, train_y.float())
+        #     loss += moe_loss * 0.01               
+
+        ####################### moe 사용률 보기 위한 임시 코드 ########################
+        else:       
+            logits, moe_loss, topk_idx = model.forward_edges(g, feats, predictor, uv=(train_u, train_v))
             logits = logits.squeeze(-1)
             loss = loss_fn(logits, train_y.float())
-            loss += moe_loss * 0.01               # 3 losses 사용 시 이 부분 주석해야 함.
+            # loss += moe_loss * 0.01
+            loss += moe_loss * 0
+
+        # --- expert usage ratio 계산 ---
+        topk_idx = topk_idx.squeeze(-1)       # (N,)
+        topk_idx = topk_idx.to(torch.int64)
+
+        counts = torch.bincount(topk_idx.cpu(), minlength=predictor.num_experts)
+        ratio = counts.float() / counts.sum()
+
+        # predictor 내부에도 저장
+        if not hasattr(predictor, "epoch_expert_usage"):
+            predictor.epoch_expert_usage = []
+        predictor.epoch_expert_usage.append(ratio)
+
+        # ---------------------------------------------------
+        # 5-fold 고려 / 질병별 파일 생성 / 자동 디렉토리 생성
+        # ---------------------------------------------------
+        # 저장 디렉토리
+        save_dir = "moe_usage"
+        if not os.path.exists(save_dir):
+            os.makedirs(save_dir)
+
+        # 파일 이름: HIBP_moe_usage_ratio.txt
+        file_path = os.path.join(save_dir, f"{disease_name}_moe_usage_ratio_lambda_0.txt")
+
+        # fold header는 fold 시작 시 한 번만 기록
+        if epoch == 0:
+            with open(file_path, "a") as f:
+                f.write(f">{fold_num} fold\n")
+
+        # epoch 기록
+        ratio_str = ",".join([f"{v:.6f}" for v in ratio.tolist()])
+        with open(file_path, "a") as f:
+            f.write(f"{epoch}\t[{ratio_str}]\n")
+        ####################### moe 사용률 보기 위한 임시 코드 ########################
 
         opt.zero_grad(); loss.backward(); opt.step()
         epoch_losses.append(loss.item())
@@ -82,7 +127,11 @@ def train_one_fold(g: DGLGraph, feats: torch.Tensor,
                 test_logits = model.forward_edges(g, feats, predictor, uv=(test_u, test_v)).squeeze(-1)
             #test_scores = torch.sigmoid(test_logits).cpu().numpy()
             else:
-                test_logits, moe_loss = model.forward_edges(g, feats, predictor, uv=(test_u, test_v))
+                # test_logits, moe_loss = model.forward_edges(g, feats, predictor, uv=(test_u, test_v))
+                
+                ####################### moe 사용률 보기 위한 임시 코드 ########################
+                test_logits, moe_loss, topk_idx = model.forward_edges(g, feats, predictor, uv=(test_u, test_v))
+                ####################### moe 사용률 보기 위한 임시 코드 ########################
                 test_logits = test_logits.squeeze(-1)
 
             test_scores_epoch = test_logits.cpu().numpy()
@@ -152,7 +201,11 @@ def train_one_fold(g: DGLGraph, feats: torch.Tensor,
         if not params["using_moe"]:
             train_logits = model.forward_edges(g, feats, predictor, uv=(train_u, train_v)).squeeze(-1)
         else:
-            logits, moe_loss = model.forward_edges(g, feats, predictor, uv=(train_u, train_v))
+            ####################### moe 사용률 보기 위한 임시 코드 ########################
+            logits, moe_loss, topk_idx = model.forward_edges(g, feats, predictor, uv=(train_u, train_v))
+            ####################### moe 사용률 보기 위한 임시 코드 ########################
+            # logits, moe_loss = model.forward_edges(g, feats, predictor, uv=(train_u, train_v))
+
             train_logits = logits.squeeze(-1)
 
         train_scores = train_logits.cpu().numpy()

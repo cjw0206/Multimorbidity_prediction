@@ -50,7 +50,7 @@ FIXED_HYPERPARAMS = {
                     "gat_neg_slope": 0.2, "gin_mlp_layers": 2, "using_moe": True},
     "multi_graph_pred_moe": {"model_type": "multi_graph_pred_moe", "lr": 0.002, "hidden_dim": 128, "n_layers": 3, "dropout": 0.3,
                     "weight_decay": 5e-4, "pred_hidden": 128, "pred_dropout": 0.3,
-                    "max_epochs": 150, "num_heads": 4, "gat_attn_drop": 0.1,
+                    "max_epochs": 350, "num_heads": 4, "gat_attn_drop": 0.1,
                     "gat_neg_slope": 0.2, "gin_mlp_layers": 2, "using_moe": True, "top_k": 1},
 
     "multi_graph_moe_fuse": {"model_type": "multi_graph_moe_fuse", "lr": 0.002, "hidden_dim": 128, "n_layers": 3, "dropout": 0.3,
@@ -108,14 +108,7 @@ TUNING_GRID = {
         "n_layers": [2, 3],
         "weight_decay": [5e-4, 1e-3]
     },
-    # "multi_graph": {
-    #     "lr": [5e-3],
-    #     "dropout": [0.3],
-    #     "n_layers": [2, 3, 4],
-    #     "num_heads": [4, 8, 16],
-    #     "weight_decay": [5e-4],
-    #     "hidden_dim": [128,256,512]
-    # },
+
     "multi_graph": {
         "lr": [1e-3],
         "dropout": [0.3],
@@ -123,16 +116,28 @@ TUNING_GRID = {
         "num_heads": [16],
         "weight_decay": [1e-3]
     },
+    # "multi_graph_pred_moe": {
+    #     "lr": [3e-5],
+    #     "dropout": [0.3],
+    #     "n_layers": [3],
+    #     "hidden_dim": [512, 1024],
+    #     "weight_decay": [1e-3],
+    #     "pred_hidden": [128, 256],
+    #     "pred_dropout": [0.3],
+    #     "top_k": [1,2,3,4]
+    # },
     "multi_graph_pred_moe": {
-        "lr": [2e-5],
-        "dropout": [0.3, 0.5],
-        "n_layers": [3],
-        "hidden_dim": [128, 256,512],
+        "lr": [5e-5],
+        "dropout": [0.1,0.3],
+        "n_layers": [2],
+        "hidden_dim": [1024],
         "weight_decay": [1e-3],
         "pred_hidden": [128, 256],
         "pred_dropout": [0.1, 0.3],
         "top_k": [1,2,3,4]
     },
+
+
     "multi_graph_moe_fuse": {
         "lr": [1e-3],
         "dropout": [0.3],

@@ -129,7 +129,8 @@ def run_experiment(params: Dict, settings: Settings, wave: int, fixed_disease_id
         pd_with_ids, person_h2h, disease_h2h,
         fixed_disease_idx=fixed_disease_idx,
         settings=settings,
-        disease_id_map=preprocessed_data["disease_id_map"]
+        disease_id_map=preprocessed_data["disease_id_map"],
+        fold_num=fold_num
     )
     
     # 1. 엣지 분포 계산 및 화면 출력
@@ -195,7 +196,9 @@ def run_experiment(params: Dict, settings: Settings, wave: int, fixed_disease_id
         person_dim=preprocessed_data["person_dim"],   # << 추가
         disease_dim=preprocessed_data["disease_dim"], # << 추가
         progress_desc=f"Fold Execution",
-        eval_info=eval_info
+        eval_info=eval_info,
+        disease_name=disease_name,
+        fold_num = fold_num
     )
 
     return metrics_dict
