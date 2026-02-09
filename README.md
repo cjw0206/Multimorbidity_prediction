@@ -13,7 +13,7 @@
 
 - **Results:**
   - Outperforms baseline methods; in the stroke group, improves AUROC by ~5.3% and AUPRC by ~4.43%.
-  - Adding the **MoE** module improves performance by ~6.9% compared with the backbone model.
+  - Adding the MoE module improves performance by ~6.9% compared with the backbone model.
 
 - **Insights:** Ablation and visualization analyses suggest the four-expert design encourages expert specialization and contributes to better prediction.
 
