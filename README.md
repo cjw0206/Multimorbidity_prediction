@@ -24,3 +24,18 @@
 <p align="center">
   <img src="Overall_workflow.png" alt="Overall Architecture" width="600"/>
 </p>
+
+
+## Requirements
+
+- **Python**: 3.9  
+- **PyTorch**: 2.1.0 (with CUDA 12.1 support)
+  (pip install torch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 --index-url https://download.pytorch.org/whl/cu121)
+- **transformers**: 4.55.4  
+- **numpy**: 1.26.3  
+- **pandas**: 2.3.0  
+- **torch-geometric**: 2.6.1  
+- **torchaudio**: 2.1.0 (py39_cu121)  
+- **torchtriton**: 2.1.0  
+- **torchvision**: 0.16.0 (py39_cu121)  
+- **tqdm**: 4.67.1  
