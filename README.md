@@ -39,5 +39,6 @@ pip install torch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 --index-url https
 - **torch-geometric**: 2.6.1  
 - **torchaudio**: 2.1.0 (py39_cu121)  
 - **torchtriton**: 2.1.0  
-- **torchvision**: 0.16.0 (py39_cu121)  
+- **torchvision**: 0.16.0 (py39_cu121)
+- **dgl**: 2.4.0+cu121
 - **tqdm**: 4.67.1  
