@@ -1,8 +1,8 @@
-# Patient-Disease Association Prediction via a Mixture-of-Experts Approach on a Heterogeneous Network
+# Patient-Disease Association Prediction via a Mixture-of-Experts Approach on a Heterogeneous Network <br>
 doi: 10.5626/KTCP.2026.32.5.218
 
-Journal: Korean Institute of Information Scientists and Engineers (정보과학회 컴퓨팅의 실제 논문지)
-Article Submission Date: 2 Feb 2026
+Journal: Korean Institute of Information Scientists and Engineers (정보과학회 컴퓨팅의 실제 논문지) <br>
+Article Submission Date: 2 Feb 2026 <br>
 Article accepted for publication: 2 Apr 2026
 
 ## Abstract
